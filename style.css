@@ -1,0 +1,617 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+
+:root {
+  --green: #27ae60;
+  --black: #2c2c54;
+  --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+}
+
+*::selection {
+  background: var(--green);
+  color: #fff;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 6.5rem;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--green);
+  color: #fff;
+  padding: 0.8rem 3rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--black);
+}
+
+.heading {
+  text-align: center;
+  color: var(--black);
+  text-transform: uppercase;
+  padding: 1rem;
+  font-size: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+.heading span {
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 2;
+}
+
+.logo-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+}
+
+.logo {
+  color: var(--black);
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+.logo i {
+  padding-right: 0.5rem;
+  color: var(--green);
+}
+
+.header .navbar a {
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  color: var(--black);
+}
+
+.header .navbar a:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.header .icons a,
+.header .icons #login-btn {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: var(--black);
+  padding-left: 1rem;
+}
+
+.header .icons a:hover,
+.header .icons #login-btn:hover {
+  color: var(--green);
+}
+
+#menu-bar {
+  display: none;
+}
+
+.search-box-container {
+  position: fixed;
+  top: -110%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.search-box-container.active {
+  top: 0;
+}
+
+.search-box-container #search-box {
+  width: 50rem;
+  border-bottom: 0.1rem solid #fff;
+  font-size: 3rem;
+  color: #ffff;
+  background: none;
+}
+
+.search-box-container #search-box::placeholder {
+  color: #eee;
+}
+
+.search-box-container #search-box::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-box-container label {
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-box-container label:hover {
+  color: var(--green);
+}
+
+.search-box-container #close-icon {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  color: #fff;
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  top: 0;
+  right: -105%;
+  z-index: 10000;
+  height: 100%;
+  width: 100%;
+}
+
+.login-form-container.active {
+  right: 0;
+}
+
+.login-form-container form {
+  background: #fff;
+  border: grey;
+  width: 40rem;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  margin: 2rem;
+}
+
+.login-form-container form h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--black);
+  text-align: center;
+}
+
+.login-form-container form span {
+  display: block;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+.login-form-container form .box {
+  width: 100%;
+  margin: 0.7rem 0;
+  font-size: 1.6rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  color: var(--black);
+  text-transform: none;
+}
+
+.login-form-container form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.login-form-container form .checkbox label {
+  font-size: 1.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+}
+
+.login-form-container form .btn {
+  text-align: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.login-form-container form p {
+  padding-top: 0.8rem;
+  color: var(--light-color);
+  font-size: 1.5rem;
+}
+
+.login-form-container form p a {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.login-form-container #close-login-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 5rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home .image {
+  flex: 1 1 40rem;
+  padding-top: 5rem;
+}
+
+.home .image img {
+  width: 100%;
+}
+
+.home .content {
+  padding-left: 3rem;
+  flex: 1 1 40rem;
+}
+
+.home .content span {
+  font-size: 3rem;
+  color: #666;
+}
+
+.home .content h3 {
+  font-size: 5rem;
+  color: var(--black);
+}
+
+.category .box-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.category .box-container .box {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 2rem;
+  flex: 1 1 25rem;
+}
+
+.category .box-container .box img {
+  width: 20rem;
+  margin: 0.5rem 0;
+}
+
+.category .box-container .box h3 {
+  font-size: 3.5rem;
+  color: var(--black);
+}
+
+.category .box-container .box p {
+  font-size: 2rem;
+  color: #666;
+  padding: 0.5rem 0;
+}
+
+.category .box-container .box .btn {
+  display: block;
+}
+
+.product .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.product .box-container .box {
+  flex: 1 1 30rem;
+  text-align: center;
+  padding: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.product .box-container .box img {
+  height: 20rem;
+}
+
+.product .box-container .box .discount {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--green);
+  padding: 0.7rem 1rem;
+  font-size: 2rem;
+}
+
+.product .box-container .box .icons {
+  position: absolute;
+  top: 0.5rem;
+  right: -6rem;
+}
+
+.product .box-container .box:hover .icons {
+  right: 1rem;
+}
+
+.product .box-container .box .icons a {
+  display: block;
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  font-size: 1.7rem;
+  color: var(--black);
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  margin-top: 0.7rem;
+}
+
+.product .box-container .box .icons a:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.product .box-container .box h3 {
+  color: var(--black);
+  font-size: 2.5rem;
+}
+
+.product .box-container .box .stars i {
+  padding: 1rem 0.1rem;
+  font-size: 1.7rem;
+  color: gold;
+}
+
+.product .box-container .box .price {
+  font-size: 2rem;
+  color: #333;
+  padding: 0.5rem 0;
+}
+
+.product .box-container .box .price span {
+  font-size: 1.5rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product .box-container .box .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.product .box-container .box .quantity span {
+  padding: 0 0.7rem;
+  font-size: 1.7rem;
+}
+
+.product .box-container .box .quantity input {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: var(--black);
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.product .box-container .box .btn {
+  display: block;
+}
+
+.contact form {
+  text-align: center;
+  padding: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
+
+.contact form .inputBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact form .inputBox input,
+.contact form textarea {
+  padding: 1rem;
+  font-size: 1.7rem;
+  background: #f7f7f7;
+  text-transform: none;
+  margin: 1rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  width: 49%;
+}
+
+.contact form textarea {
+  height: 20rem;
+  resize: none;
+  width: 100%;
+}
+
+.newsletter {
+  background: url(../images/newsletter-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.newsletter h3 {
+  font-size: 3rem;
+  color: var(--black);
+}
+
+.newsletter form {
+  max-width: 55rem;
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.newsletter form .box {
+  width: 100%;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.7rem;
+  color: #333;
+  text-transform: none;
+}
+
+.newsletter form .btn {
+  margin-top: 0;
+}
+
+.footer .box-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer .box-container .box {
+  padding: 1rem 0;
+  flex: 1 1 25rem;
+}
+
+.footer .box-container .box .share a {
+  padding: 0;
+  height: 4rem;
+  width: 4rem;
+  line-height: 4rem;
+  text-align: center;
+}
+
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  color: var(--black);
+}
+
+.footer .box-container .box p {
+  font-size: 1.3rem;
+  color: #666;
+  padding: 0.7rem 0;
+}
+
+.footer .box-container .box .links {
+  padding: 1rem 0;
+}
+
+.footer .box-container .box .links a {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 1.7rem;
+  color: #333;
+}
+
+.footer .box-container .box .links a:hover {
+  text-decoration: underline;
+  color: var(--green);
+}
+
+/* media queries  */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-bar {
+    display: initial;
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--black);
+    padding: 1rem 2rem;
+    width: 100%;
+    display: none;
+  }
+
+  .header .navbar.active {
+    display: initial;
+  }
+
+  .header .navbar a {
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+    background: #eee;
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .home .content {
+    text-align: center;
+  }
+
+  .home .content h3 {
+    font-size: 4rem;
+  }
+
+  .contact form .inputBox input {
+    width: 100%;
+  }
+
+  .newsletter h3 {
+    font-size: 2.2rem;
+  }
+}
