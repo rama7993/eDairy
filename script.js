@@ -18,3 +18,9 @@ document.querySelector("#search-bar").onclick = () => {
 document.querySelector("#close-icon").onclick = () => {
   searchForm.classList.toggle("active");
 };
+
+document.querySelectorAll(".icons a").forEach((icon) => {
+  icon.addEventListener("click", function (e) {
+    e.preventDefault();
+  });
+});
