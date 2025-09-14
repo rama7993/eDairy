@@ -14,7 +14,7 @@ const likedSidebar = document.querySelector("#liked-sidebar");
 const closeLiked = document.querySelector("#close-liked");
 const likedItemsContainer = document.querySelector("#liked-items");
 const likedTotal = document.querySelector("#liked-total");
-const likedCount = document.querySelector(".liked-count");
+const likedCount = document.querySelector(".header .icons .liked-count");
 
 // Check if essential elements exist
 if (!cartItems || !cartTotal || !cartCount) {
@@ -154,7 +154,7 @@ function initializeEventListeners() {
 
   // Like button functionality
   document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("fa-heart")) {
+    if (e.target.classList.contains("fa-heart") && !e.target.id) {
       e.preventDefault();
       toggleLike(e.target);
     }
@@ -407,7 +407,9 @@ function createProductModal(product) {
   }">
                 <i class="fas fa-shopping-cart"></i> Add to Cart
               </button>
-              <button class="btn btn-secondary" onclick="shareProduct(this)">
+              <button class="btn btn-secondary modal-share-btn" data-product-name="${
+                product.name
+              }" data-product-price="${product.price}">
                 <i class="fas fa-share"></i> Share
               </button>
             </div>
@@ -610,18 +612,74 @@ function createProductModal(product) {
 
   // Handle add to cart in modal
   modal.querySelector(".add-to-cart").addEventListener("click", (e) => {
-    addToCart(e.target);
+    e.preventDefault();
+    const productName = product.name;
+    const productPrice = parseFloat(product.price.match(/\d+/)[0]);
+    const productImage = product.image;
+    const quantity = 1; // Default quantity for modal
+
+    const existingItem = cart.find((item) => item.name === productName);
+
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      cart.push({
+        name: productName,
+        price: productPrice,
+        image: productImage,
+        quantity: quantity,
+      });
+    }
+
+    saveCart();
+    updateCartUI();
+    showToast(`${productName} added to cart!`);
     modal.remove();
+
+    // Add animation to button
+    e.target.style.transform = "scale(0.95)";
+    setTimeout(() => {
+      e.target.style.transform = "scale(1)";
+    }, 150);
   });
 
   // Handle share in modal
-  modal.querySelector(".btn-secondary").addEventListener("click", (e) => {
-    shareProduct(e.target);
+  modal.querySelector(".modal-share-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const productName = e.target.dataset.productName;
+    const productPrice = e.target.dataset.productPrice;
+
+    const shareData = {
+      title: `${productName} - eDairy`,
+      text: `Check out this amazing product: ${productName} for ${productPrice}`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      // Use native share API if available
+      navigator
+        .share(shareData)
+        .then(() => {
+          showToast(`${productName} shared successfully!`);
+        })
+        .catch((error) => {
+          console.log("Error sharing:", error);
+          fallbackShare(productName, productPrice);
+        });
+    } else {
+      // Fallback for browsers that don't support native share
+      fallbackShare(productName, productPrice);
+    }
   });
 }
 
 // Make removeFromCart globally accessible
-window.removeFromCart = function (index) {
+window.removeFromCart = function (index, event) {
+  if (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
   cart.splice(index, 1);
   saveCart();
   updateCartUI();
@@ -629,7 +687,12 @@ window.removeFromCart = function (index) {
 };
 
 // Make updateQuantity globally accessible
-window.updateQuantity = function (index, change) {
+window.updateQuantity = function (index, change, event) {
+  if (event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
   cart[index].quantity += change;
   if (cart[index].quantity <= 0) {
     removeFromCart(index);
@@ -800,9 +863,10 @@ function updateCartUI() {
             <div class="price">₹${item.price}</div>
           </div>
           <div class="cart-item-controls">
-            <button onclick="updateQuantity(${index}, -1)">-</button>
+            <button onclick="updateQuantity(${index}, -1, event)" title="Decrease quantity">-</button>
             <span>${item.quantity}</span>
-            <button onclick="updateQuantity(${index}, 1)">+</button>
+            <button onclick="updateQuantity(${index}, 1, event)" title="Increase quantity">+</button>
+            <button onclick="removeFromCart(${index}, event)" class="remove-btn" title="Remove item">×</button>
           </div>
         </div>
       `

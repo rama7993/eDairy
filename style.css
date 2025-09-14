@@ -5,6 +5,18 @@
   --black: #2c2c54;
   --border: 0.1rem solid rgba(0, 0, 0, 0.1);
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  --light-color: #666;
+  --light-gray: #eee;
+  --gray: #666;
+  --white: #fff;
+  --dark: #2c2c54;
+  --primary: #27ae60;
+  --primary-dark: #219a52;
+  --light: #f8f9fa;
+  --border-radius: 0.5rem;
+  --transition: all 0.3s ease;
+  --gradient-primary: linear-gradient(135deg, #27ae60, #219a52);
+  --box-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -756,14 +768,16 @@ section {
   justify-content: center;
   margin: 0.5rem;
   border-radius: 50%;
-  background: var(--gradient-primary);
-  color: var(--white);
-  transition: var(--transition);
+  background: var(--green);
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .footer .box-container .box .share a:hover {
   transform: translateY(-3px);
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: var(--black);
 }
 
 .footer .box-container .box h3 {
@@ -898,6 +912,16 @@ section {
 .cart-item-controls button:hover {
   background: var(--primary-dark);
   transform: scale(1.1);
+}
+
+.cart-item-controls .remove-btn {
+  background: #e74c3c;
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+.cart-item-controls .remove-btn:hover {
+  background: #c0392b;
 }
 
 .cart-item-controls span {
@@ -1104,12 +1128,12 @@ section {
   background: #f8f9fa;
 }
 
-.liked-count {
+.liked-footer .liked-count {
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.liked-count h4 {
+.liked-footer .liked-count h4 {
   font-size: 2.2rem;
   color: var(--black);
   margin: 0;
@@ -1156,7 +1180,7 @@ section {
   position: relative;
 }
 
-.liked-count {
+.header .icons .liked-count {
   position: absolute;
   top: -5px;
   right: -5px;
@@ -1815,7 +1839,7 @@ section {
 
   /* Cart and liked count responsive */
   .cart-count,
-  .liked-count {
+  .header .icons .liked-count {
     width: 18px;
     height: 18px;
     font-size: 1rem;
