@@ -34,8 +34,12 @@
       <div class="icons">
         <a href="#" class="fas fa-bars" id="menu-bar"></a>
         <a href="#" class="fas fa-search" id="search-bar"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-shopping-cart" id="cart-icon">
+          <span class="cart-count">0</span>
+        </a>
+        <a href="#" class="fas fa-heart" id="liked-icon">
+          <span class="liked-count">0</span>
+        </a>
         <div id="login-btn" class="fas fa-user"></div>
       </div>
     </header>
@@ -94,6 +98,42 @@
       </form>
     </div>
 
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <span class="close-cart" id="close-cart">&times;</span>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items will be added here dynamically -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <h4>Total: ₹<span id="cart-total">0</span></h4>
+        </div>
+        <button class="btn checkout-btn" id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- Liked Items Sidebar -->
+    <div class="liked-sidebar" id="liked-sidebar">
+      <div class="liked-header">
+        <h3>Favorites</h3>
+        <span class="close-liked" id="close-liked">&times;</span>
+      </div>
+      <div class="liked-items" id="liked-items">
+        <!-- Liked items will be added here dynamically -->
+      </div>
+      <div class="liked-footer">
+        <div class="liked-count">
+          <h4>Total Items: <span id="liked-total">0</span></h4>
+        </div>
+        <button class="btn clear-liked-btn" id="clear-liked-btn">
+          Clear All
+        </button>
+      </div>
+    </div>
+
     <!-- home section starts  -->
     <section class="home" id="home">
       <div class="image">
@@ -147,13 +187,14 @@
 
       <div class="box-container">
         <div class="box">
+          <div class="discount">20% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-1.jpg" alt="" />
-          <h3>Cheese</h3>
+          <img src="images/product-1.jpg" alt="Fresh Cheese" />
+          <h3>Fresh Cheese</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -161,23 +202,30 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-
+          <div class="price">₹450 <span>₹560</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
             <span> /kg </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="cheese"
+            data-price="450"
+            >add to cart</a
+          >
         </div>
 
         <div class="box">
+          <div class="discount">15% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-2.jpg" alt="" />
-          <h3>Butter</h3>
+          <img src="images/product-2.jpg" alt="Pure Butter" />
+          <h3>Pure Butter</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -185,23 +233,30 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-
+          <div class="price">₹320 <span>₹380</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
             <span> /kg </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="butter"
+            data-price="320"
+            >add to cart</a
+          >
         </div>
 
         <div class="box">
+          <div class="discount">10% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-3.jpg" alt="" />
-          <h3>Organic milk</h3>
+          <img src="images/product-3.jpg" alt="Organic Milk" />
+          <h3>Organic Milk</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -209,23 +264,30 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-
+          <div class="price">₹60 <span>₹70</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
-            <span> /kg </span>
+            <span> /liter </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="milk"
+            data-price="60"
+            >add to cart</a
+          >
         </div>
 
         <div class="box">
+          <div class="discount">25% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-4.jpg" alt="" />
-          <h3>Almond milk</h3>
+          <img src="images/product-4.jpg" alt="Almond Milk" />
+          <h3>Almond Milk</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -233,22 +295,30 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
+          <div class="price">₹120 <span>₹160</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
-            <span> /kg </span>
+            <span> /liter </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="almond-milk"
+            data-price="120"
+            >add to cart</a
+          >
         </div>
 
         <div class="box">
+          <div class="discount">5% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-5.jpg" alt="" />
-          <h3>Curd</h3>
+          <img src="images/product-5.jpg" alt="Fresh Curd" />
+          <h3>Fresh Curd</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -256,23 +326,30 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-
+          <div class="price">₹40 <span>₹45</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
             <span> /kg </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="curd"
+            data-price="40"
+            >add to cart</a
+          >
         </div>
 
         <div class="box">
+          <div class="discount">30% OFF</div>
           <div class="icons">
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-share"></a>
             <a href="#" class="fas fa-eye"></a>
           </div>
-          <img src="images/product-6.jpg" alt="" />
-          <h3>Pure ghee</h3>
+          <img src="images/product-6.jpg" alt="Pure Ghee" />
+          <h3>Pure Ghee</h3>
           <div class="stars">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -280,18 +357,119 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-
+          <div class="price">₹700 <span>₹1000</span></div>
           <div class="quantity">
             <span>quantity : </span>
             <input type="number" min="1" max="1000" value="1" />
             <span> /kg </span>
           </div>
-          <a href="#" class="btn">add to cart</a>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="ghee"
+            data-price="700"
+            >add to cart</a
+          >
         </div>
       </div>
     </section>
 
     <!-- product section ends -->
+
+    <!-- testimonials section starts -->
+    <section class="testimonials" id="testimonials">
+      <h1 class="heading">what our <span>customers</span> say</h1>
+
+      <div class="testimonials-container">
+        <div class="testimonial-slide active">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "The freshest dairy products I've ever ordered online. The cheese
+              is absolutely amazing and the delivery was super fast!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face%22"
+                alt="Customer"
+              />
+              <div>
+                <h4>Sarah Johnson</h4>
+                <span>Regular Customer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "Excellent quality and service. The organic milk tastes so fresh
+              and pure. Highly recommended for health-conscious families!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                alt="Customer"
+              />
+              <div>
+                <h4>Michael Chen</h4>
+                <span>Health Enthusiast</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "Amazing variety of dairy products. The ghee is pure and
+              authentic. Great packaging and timely delivery every time!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                alt="Customer"
+              />
+              <div>
+                <h4>Priya Sharma</h4>
+                <span>Food Blogger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="testimonial-prev" onclick="changeTestimonial(-1)">
+          ❮
+        </button>
+        <button class="testimonial-next" onclick="changeTestimonial(1)">
+          ❯
+        </button>
+      </div>
+    </section>
+    <!-- testimonials section ends -->
 
     <!-- contact section starts  -->
 
@@ -364,7 +542,7 @@
               class="btn fab fa-instagram"
             ></a>
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/company/107554674"
               target="_blank"
               class="btn fab fa-linkedin"
             ></a>
@@ -424,7 +602,7 @@
     <!-- footer section ends -->
 
     <!-- custom js file link  -->
-    <script type="module" src="script.js"></script>
-    <script type="module" src="login.js"></script>
+    <script src="script.js"></script>
+    <script src="login.js"></script>
   </body>
 </html>
