@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organic dairy online store</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- header section starts  -->
+    <header class="header">
+      <div class="logo-header">
+        <a href="#" class="logo"><i class="fas fa-cheese"></i>eDairy</a>
+        <span class="logo-text"> Bringing Freshness to Your Doorstep</span>
+      </div>
+
+      <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#category">category</a>
+        <a href="#product">products</a>
+        <a href="#contact">contact</a>
+      </nav>
+
+      <div class="icons">
+        <a href="#" class="fas fa-bars" id="menu-bar"></a>
+        <a href="#" class="fas fa-search" id="search-bar"></a>
+        <a href="#" class="fas fa-shopping-cart" id="cart-icon">
+          <span class="cart-count">0</span>
+        </a>
+        <a href="#" class="fas fa-heart" id="liked-icon">
+          <span class="liked-count">0</span>
+        </a>
+        <div id="login-btn" class="fas fa-user"></div>
+      </div>
+    </header>
+    <!-- header section ends -->
+
+    <!-- Search Form -->
+    <form action="" class="search-box-container">
+      <div class="search-input-wrapper">
+        <input
+          type="search"
+          id="search-box"
+          placeholder="Search products, categories..."
+          autocomplete="off"
+        />
+        <label for="search-box" class="fas fa-search"></label>
+        <button
+          type="button"
+          id="clear-search"
+          class="fas fa-times"
+          style="display: none"
+        ></button>
+      </div>
+      <div class="search-suggestions" id="search-suggestions"></div>
+      <i id="close-icon" class="fas fa-times"></i>
+    </form>
+
+    <div class="login-form-container">
+      <div id="close-login-btn" class="fas fa-times"></div>
+
+      <!-- Login Form -->
+      <form class="form login-form active">
+        <h3>sign in</h3>
+        <span>username</span>
+        <input type="email" class="box" placeholder="enter your email" />
+        <span>password</span>
+        <input type="password" class="box" placeholder="enter your password" />
+        <div class="checkbox">
+          <input type="checkbox" id="remember-me" />
+          <label for="remember-me"> remember me</label>
+        </div>
+        <input type="submit" value="sign in" class="btn" />
+        <p>forget password ? <a href="#" id="show-reset">click here</a></p>
+        <p>
+          don't have an account ? <a href="#" id="show-signup">create one</a>
+        </p>
+      </form>
+
+      <!-- Reset Password Form -->
+      <form class="form reset-form">
+        <h3>reset password</h3>
+        <span>email</span>
+        <input type="email" class="box" placeholder="enter your email" />
+        <input type="submit" value="reset password" class="btn" />
+        <p>
+          remembered password ? <a href="#" id="back-to-login-1">sign in</a>
+        </p>
+      </form>
+
+      <!-- Signup Form -->
+      <form class="form signup-form">
+        <h3>create account</h3>
+        <span>email</span>
+        <input type="email" class="box" placeholder="enter your email" />
+        <span>password</span>
+        <input type="password" class="box" placeholder="create password" />
+        <input type="submit" value="sign up" class="btn" />
+        <p>
+          already have an account ? <a href="#" id="back-to-login-2">sign in</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <span class="close-cart" id="close-cart">&times;</span>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items will be added here dynamically -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <h4>Total: ₹<span id="cart-total">0</span></h4>
+        </div>
+        <button class="btn checkout-btn" id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+    <!-- Liked Items Sidebar -->
+    <div class="liked-sidebar" id="liked-sidebar">
+      <div class="liked-header">
+        <h3>Favorites</h3>
+        <span class="close-liked" id="close-liked">&times;</span>
+      </div>
+      <div class="liked-items" id="liked-items">
+        <!-- Liked items will be added here dynamically -->
+      </div>
+      <div class="liked-footer">
+        <div class="liked-count">
+          <h4>Total Items: <span id="liked-total">0</span></h4>
+        </div>
+        <button class="btn clear-liked-btn" id="clear-liked-btn">
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <!-- home section starts  -->
+    <section class="home" id="home">
+      <div class="image">
+        <img src="images/home-img.jpg" alt="" />
+      </div>
+      <div class="content">
+        <span>Fresh and pure</span>
+        <h3>your daily need products</h3>
+        <a href="#product" class="btn" id="get-started-btn">get started</a>
+      </div>
+    </section>
+    <!-- home section ends -->
+
+    <!-- category section starts  -->
+    <section class="category" id="category">
+      <h1 class="heading">shop by <span>category</span></h1>
+
+      <div class="box-container">
+        <div class="box">
+          <h3>Fermented products</h3>
+          <p>upto 50% off</p>
+          <img src="images/category-1.jpg" alt="" />
+          <a href="#product" class="btn shop-now-btn" data-category="fermented"
+            >shop now</a
+          >
+        </div>
+
+        <div class="box">
+          <h3>Drinks</h3>
+          <p>upto 44% off</p>
+          <img src="images/category-2.jpg" height="40%" alt="" />
+          <a href="#product" class="btn shop-now-btn" data-category="drinks"
+            >shop now</a
+          >
+        </div>
+        <div class="box">
+          <h3>Chocolate</h3>
+          <p>upto 35% off</p>
+          <img src="images/category-3.jpg" alt="" />
+          <a href="#product" class="btn shop-now-btn" data-category="chocolate"
+            >shop now</a
+          >
+        </div>
+        <div class="box">
+          <h3>sweets</h3>
+          <p>upto 12% off</p>
+          <img src="images/category-4.jpg" alt="" />
+          <a href="#product" class="btn shop-now-btn" data-category="sweets"
+            >shop now</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- category section ends -->
+
+    <!-- product section starts  -->
+    <section class="product" id="product">
+      <h1 class="heading">latest <span>products</span></h1>
+
+      <div class="box-container">
+        <div class="box">
+          <div class="discount">20% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-1.jpg" alt="Fresh Cheese" />
+          <h3>Fresh Cheese</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹450 <span>₹560</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /kg </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="cheese"
+            data-price="450"
+            >add to cart</a
+          >
+        </div>
+
+        <div class="box">
+          <div class="discount">15% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-2.jpg" alt="Pure Butter" />
+          <h3>Pure Butter</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹320 <span>₹380</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /kg </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="butter"
+            data-price="320"
+            >add to cart</a
+          >
+        </div>
+
+        <div class="box">
+          <div class="discount">10% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-3.jpg" alt="Organic Milk" />
+          <h3>Organic Milk</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹60 <span>₹70</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /liter </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="milk"
+            data-price="60"
+            >add to cart</a
+          >
+        </div>
+
+        <div class="box">
+          <div class="discount">25% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-4.jpg" alt="Almond Milk" />
+          <h3>Almond Milk</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹120 <span>₹160</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /liter </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="almond-milk"
+            data-price="120"
+            >add to cart</a
+          >
+        </div>
+
+        <div class="box">
+          <div class="discount">5% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-5.jpg" alt="Fresh Curd" />
+          <h3>Fresh Curd</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹40 <span>₹45</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /kg </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="curd"
+            data-price="40"
+            >add to cart</a
+          >
+        </div>
+
+        <div class="box">
+          <div class="discount">30% OFF</div>
+          <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-share"></a>
+            <a href="#" class="fas fa-eye"></a>
+          </div>
+          <img src="images/product-6.jpg" alt="Pure Ghee" />
+          <h3>Pure Ghee</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="price">₹700 <span>₹1000</span></div>
+          <div class="quantity">
+            <span>quantity : </span>
+            <input type="number" min="1" max="1000" value="1" />
+            <span> /kg </span>
+          </div>
+          <a
+            href="#"
+            class="btn add-to-cart"
+            data-product="ghee"
+            data-price="700"
+            >add to cart</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- product section ends -->
+
+    <!-- testimonials section starts -->
+    <section class="testimonials" id="testimonials">
+      <h1 class="heading">what our <span>customers</span> say</h1>
+
+      <div class="testimonials-container">
+        <div class="testimonial-slide active">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "The freshest dairy products I've ever ordered online. The cheese
+              is absolutely amazing and the delivery was super fast!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop&crop=face%22"
+                alt="Customer"
+              />
+              <div>
+                <h4>Sarah Johnson</h4>
+                <span>Regular Customer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "Excellent quality and service. The organic milk tastes so fresh
+              and pure. Highly recommended for health-conscious families!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                alt="Customer"
+              />
+              <div>
+                <h4>Michael Chen</h4>
+                <span>Health Enthusiast</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-content">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "Amazing variety of dairy products. The ghee is pure and
+              authentic. Great packaging and timely delivery every time!"
+            </p>
+            <div class="customer-info">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                alt="Customer"
+              />
+              <div>
+                <h4>Priya Sharma</h4>
+                <span>Food Blogger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="testimonial-prev" onclick="changeTestimonial(-1)">
+          ❮
+        </button>
+        <button class="testimonial-next" onclick="changeTestimonial(1)">
+          ❯
+        </button>
+      </div>
+    </section>
+    <!-- testimonials section ends -->
+
+    <!-- contact section starts  -->
+
+    <section class="contact" id="contact">
+      <h1 class="heading"><span>contact</span> us</h1>
+
+      <form action="">
+        <div class="inputBox">
+          <input type="text" placeholder="name" />
+          <input type="email" placeholder="email" />
+        </div>
+
+        <div class="inputBox">
+          <input type="number" placeholder="number" />
+          <input type="text" placeholder="subject" />
+        </div>
+
+        <textarea
+          placeholder="message"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+
+        <input type="submit" value="send message" class="btn" />
+      </form>
+    </section>
+
+    <!-- contact section ends -->
+
+    <!-- newsletter section starts  -->
+
+    <section class="newsletter">
+      <h3>subscribe us for latest updates</h3>
+
+      <form action="">
+        <input class="box" type="email" placeholder="enter your email" />
+        <input type="submit" value="subscribe" class="btn" />
+      </form>
+    </section>
+
+    <!-- newsletter section ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+      <div class="box-container">
+        <div class="box">
+          <a href="#" class="logo"><i class="fas fa-cheese"></i>eDairy</a>
+          <p>
+            Discover the joy of enjoying fresh milk, cheese, yogurt, and other
+            dairy delights, all while knowing you're making a healthy choice for
+            you and your family.
+          </p>
+          <div class="share">
+            <a href="https://www.facebook.com" target="_blank" class="btn">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="btn">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="btn">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/107554674"
+              target="_blank"
+              class="btn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>our location</h3>
+          <div class="links">
+            <a href="https://maps.google.com/?q=Guntur" target="_blank"
+              >Guntur</a
+            >
+            <a href="https://maps.google.com/?q=Vijayawada" target="_blank"
+              >Vijayawada</a
+            >
+            <a href="https://maps.google.com/?q=Hyderabad" target="_blank"
+              >Hyderabad</a
+            >
+            <a href="https://maps.google.com/?q=Chennai" target="_blank"
+              >Chennai</a
+            >
+            <a href="https://maps.google.com/?q=Bangalore" target="_blank"
+              >Bangalore</a
+            >
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>quick links</h3>
+          <div class="links">
+            <a href="#home">home</a>
+            <a href="#category">category</a>
+            <a href="#product">products</a>
+            <a href="#contact">contact</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>download app</h3>
+          <div class="links">
+            <a href="https://play.google.com/store" target="_blank"
+              >Google Play</a
+            >
+            <a
+              href="https://www.microsoft.com/en-us/software-download/windowsxp"
+              target="_blank"
+              >Windows XP</a
+            >
+            <a href="https://www.apple.com/app-store/" target="_blank"
+              >App Store</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer section ends -->
+
+    <!-- custom js file link  -->
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
